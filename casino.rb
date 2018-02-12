@@ -14,7 +14,7 @@ class Casino
     @player = Player.new
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
     puts
-    @options = [ , "Slots"]
+    @options = ["Slots", "Claw",]
     menu
   end
 
@@ -25,7 +25,7 @@ class Casino
     when 1
         Slots.new
     when 2
-        #menu options
+        Claw.new
     when 4
         puts "Come back soon!"
         exit
