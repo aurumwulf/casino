@@ -1,6 +1,7 @@
 require 'pry'
 require 'colorize'
 require_relative 'player'
+require_relative 'slots'
 #require_relative every game file name
 
 class Casino
