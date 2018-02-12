@@ -64,4 +64,4 @@ attr_accessor :player
     end
   end
 end
-Slots.new
+Slots.new.menu(Player)
