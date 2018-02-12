@@ -1,14 +1,16 @@
 require_relative 'table'
+require_relative 'player'
 
 class Roulette
 
-  attr_accessor :number_list
+  attr_accessor :number_list :bet 
 
   def initialize
     @number_list = []
     generate_red
     generate_black
     generate_zero
+    play
   end
 
   def generate_red
@@ -34,7 +36,21 @@ class Roulette
       @number_list << Table.new(number, color)
     end
   end
+  
+  def play
+    puts "Welcome to roulette"
+    puts "How much would you like to bet??"
+    @bet = gets.to_i
+    spin
+  end
+
+  def spin
+    @num = @number_list.rand
+    # now would have to implement a betting system and give payouts accordingly i.e. player.wallet.amount += (bet*2)
+
+  end
 end
 
 @start = Roulette.new
 @start
+# to reference a classs
