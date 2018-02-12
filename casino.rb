@@ -15,7 +15,7 @@ class Casino
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
     puts
     @options = [#games go hurrrrr
-]
+    ]
     menu
   end
 
@@ -26,7 +26,7 @@ class Casino
     when 1
         #make menu options when games are ready
     when 2
-        #menu options 
+        #menu options
     when 4
         puts "Come back soon!"
         exit
