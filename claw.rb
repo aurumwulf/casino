@@ -15,7 +15,7 @@ require_relative 'Wallet'
 class Claw
 def menu
   puts "~~~Claw~~~"
-  puts "1) Deal my cards"
+  puts "1) Begin game"
   puts "2) Exit"
   user_input = gets.strip.to_i
 end
