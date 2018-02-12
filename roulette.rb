@@ -1,56 +1,113 @@
-require_relative 'table'
+require 'colorize'
+require_relative 'roulette_table'
 require_relative 'player'
 
 class Roulette
 
-  attr_accessor :number_list :bet 
+  attr_accessor :number_list, :bet
 
   def initialize
     @number_list = []
+    @bet = 0
     generate_red
     generate_black
     generate_zero
-    play
+    prompt
   end
 
   def generate_red
-    numbers_red = [1, 3, 5, 7, 9, 12, 14, 16, 18, 21, 23, 25, 27, 28, 30, 32, 34, 36]
-    color = 'red'
+    numbers_red = %w(1 3 5 7 9 12 14 16 18 21 23 25 27 28 30 32 34 36)
+    color = 'Red'
     numbers_red.each do |number|
       @number_list << Table.new(number, color)
     end
   end
 
   def generate_black
-    numbers_black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 19, 20, 22, 24, 26, 29, 31, 33, 35]
-    color = 'black'
+    numbers_black = %w(2 4 6 8 10 11 13 15 17 19 20 22 24 26 29 31 33 35)
+    color = 'Black'
     numbers_black.each do |number|
       @number_list << Table.new(number, color)
     end
   end
 
   def generate_zero
-    numbers_zero = ['0', '00']
-    color = 'green'
+    numbers_zero = %w(0 00)
+    color = 'Green'
     numbers_zero.each do |number|
       @number_list << Table.new(number, color)
     end
   end
-  
-  def play
-    puts "Welcome to roulette"
-    puts "How much would you like to bet??"
-    @bet = gets.to_i
-    spin
+
+  def prompt
+    puts 'Welcome to Roulette!'
+    puts 'What would you like to do?'
+    puts '1) Bet on Roulette.'
+    puts '2) Leave Roulette.'.colorize(:red)
+    choice = gets.to_i
+    case choice
+      when 1
+        play
+      when 2
+        exit #TODO Leave to primary casino menu.
+      else
+        puts 'Invalid menu selection.'.colorize(:red)
+    end
+    prompt
   end
 
-  def spin
-    @num = @number_list.rand
-    # now would have to implement a betting system and give payouts accordingly i.e. player.wallet.amount += (bet*2)
+  def play
+    puts 'How much would you like to bet?'
+    @bet = gets.to_f
+    puts 'What would you like to bet on?'
+    puts '1) Number.'
+    puts '2) Color.'
+    choice = gets.to_i
+    case choice
+    when 1
+      number
+    when 2
+      color
+    else
+      puts 'Invalid menu selection.'.colorize(:red)
+    end
+    prompt
+  end
 
+  def number
+    puts 'What number would you like to bet on?'
+    puts 'Choose 0, 00, or a number between 1-36.'
+    choice = gets.strip.to_s # No error handling.
+    puts "Your choice is #{choice}."
+    result = @number_list.sample
+    number = result.number
+    puts "Roulette spins to #{number}."
+    if choice == number
+      @bet = @bet * 2
+      puts "YOU WIN! You receive $#{'%.2f' % @bet}!".colorize(:light_green)
+    else
+      @bet = 0
+      puts "YOU LOSE!".colorize(:red)
+    end
+  end
+
+  def color
+    puts 'What color would you like to bet on?'
+    puts 'Choose Red, Black, or Green.'
+    choice = gets.strip.to_s.downcase # No error handling.
+    puts "Your choice is #{choice}."
+    result = @number_list.sample
+    color = result.color
+    puts "Roulette spins to #{color}."
+    if choice ==result.color
+      @bet = @bet + (@bet * 0.5)
+      puts "YOU WIN! You receive $#{'%.2f' % @bet}!".colorize(:light_green)
+    else
+      @bet = 0
+      puts "YOU LOSE!".colorize(:red)
+    end
   end
 end
 
-@start = Roulette.new
-@start
-# to reference a classs
+start = Roulette.new
+start
