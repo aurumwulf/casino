@@ -14,8 +14,7 @@ class Casino
     @player = Player.new
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
     puts
-    @options = [#games go hurrrrr
-    ]
+    @options = [ , "Slots"]
     menu
   end
 
@@ -24,7 +23,7 @@ class Casino
     choice = gets.to_i - 1
     case choice
     when 1
-        #make menu options when games are ready
+        Slots.new
     when 2
         #menu options
     when 4

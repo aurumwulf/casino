@@ -18,7 +18,7 @@ class Player
 
   def age_verification
     if @age < MIN_AGE
-      `say NOT OLD ENOUGH!`
+      `NO CHILDREN ALLOWED!`
       exit
     end
   end
