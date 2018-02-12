@@ -1,13 +1,13 @@
 require 'colorize'
 require_relative 'roulette_table'
-require_relative 'player'
 
 class Roulette
 
   attr_accessor :number_list, :bet
 
-  def initialize
+  def initialize (wallet)
     @number_list = []
+    @wallet = wallet
     @bet = 0
     generate_red
     generate_black
@@ -43,25 +43,26 @@ class Roulette
     puts 'Welcome to Roulette!'
     puts 'What would you like to do?'
     puts '1) Bet on Roulette.'
-    puts '2) Leave Roulette.'.colorize(:red)
+    puts '2) Exit to the main hall.'.red
     choice = gets.to_i
     case choice
       when 1
         play
       when 2
-        exit #TODO Leave to primary casino menu.
+        #TODO Exit to casino menu.
       else
-        puts 'Invalid menu selection.'.colorize(:red)
+        puts 'Invalid menu selection.'.red
     end
     prompt
   end
 
   def play
+    puts "You currently have $#{'%.2f' % @wallet}.".green
     puts 'How much would you like to bet?'
     @bet = gets.to_f
     puts 'What would you like to bet on?'
-    puts '1) Number.'
-    puts '2) Color.'
+    puts '1) Number (Payout: 2x Bet)'
+    puts '2) Color (Payout: 0.5x Bet)'
     choice = gets.to_i
     case choice
     when 1
@@ -69,7 +70,7 @@ class Roulette
     when 2
       color
     else
-      puts 'Invalid menu selection.'.colorize(:red)
+      puts 'Invalid menu selection.'.red
     end
     prompt
   end
@@ -84,10 +85,11 @@ class Roulette
     puts "Roulette spins to #{number}."
     if choice == number
       @bet = @bet * 2
+      @wallet += @bet
       puts "YOU WIN! You receive $#{'%.2f' % @bet}!".colorize(:light_green)
     else
-      @bet = 0
-      puts "YOU LOSE!".colorize(:red)
+      @wallet -= @bet
+      puts "YOU LOSE!".red
     end
   end
 
@@ -99,15 +101,13 @@ class Roulette
     result = @number_list.sample
     color = result.color
     puts "Roulette spins to #{color}."
-    if choice ==result.color
+    if choice == result.color
       @bet = @bet + (@bet * 0.5)
+      @wallet += @bet
       puts "YOU WIN! You receive $#{'%.2f' % @bet}!".colorize(:light_green)
     else
-      @bet = 0
-      puts "YOU LOSE!".colorize(:red)
+      @wallet -= @bet
+      puts "YOU LOSE!".red
     end
   end
 end
-
-start = Roulette.new
-start
