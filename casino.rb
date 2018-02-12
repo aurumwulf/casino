@@ -14,13 +14,13 @@ class Casino
     @player = Player.new
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
     puts
-    @options = [ , "Slots"]
+    @options = [, "Slots"]
     menu
   end
 
   def menu
     @options.each_with_index { |opt, i| puts "#{i + 1}) #{opt}" }
-    choice = gets.to_i - 1
+    choice = gets.to_i
     case choice
     when 1
         Slots.new
