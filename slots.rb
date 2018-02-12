@@ -18,11 +18,11 @@ attr_accessor :player
     case play
     when 1
       imp(player)
-    when 2 
+    when 2
       Casino.new
     else
       puts "Not a valid input"
-    end  
+    end
   end
 
   def imp(player)
@@ -64,4 +64,3 @@ attr_accessor :player
     end
   end
 end
-Slots.new.menu(Player)

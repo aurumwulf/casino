@@ -33,7 +33,7 @@ class Casino
     when 4
         puts "Come back soon!"
         exit
-      else
+    else
         puts "Not a Valid choice"
     end
     menu
