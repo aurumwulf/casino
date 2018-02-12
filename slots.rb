@@ -10,7 +10,7 @@ attr_accessor :player
     puts "==============================================="
     puts "Slot Machine is in effect"
     puts "Match two any suit and win your bet x2"
-    puts "Match all three of any suit and win your bet x100"
+    puts "Match all three of any suit and win your bet x5"
     puts "==============================================="
     puts "1) Play the slots"
     puts "2) Exit to the main hall"

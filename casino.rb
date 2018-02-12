@@ -16,6 +16,11 @@ class Casino
     @wallet = @player.wallet.amount
     @options = ["Slots", "Roulette", "Claw"]
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
+<<<<<<< HEAD
+=======
+    puts
+    @options = []
+>>>>>>> menu
     menu
   end
 
@@ -25,11 +30,15 @@ class Casino
     choice = gets.to_i
     case choice
     when 1
-        Slots.new
+        
     when 2
+<<<<<<< HEAD
         Roulette.new(@wallet)
     when 3
         Claw.new
+=======
+        Scratcher.new
+>>>>>>> menu
     when 4
         puts "Come back soon!"
         exit

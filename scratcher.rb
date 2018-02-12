@@ -1,15 +1,16 @@
-# still buggy
+# fix wallet and return to main menu
 require 'pry'
 require 'colorize'
 require_relative 'player'
+require_relative 'casino'
 
 class Scratcher
     attr_accessor :player, :wallet
-    arr = %w[1, 2, 3, 4, 5, 6, 0, 0, 0,]
     
     def equations
         puts "SCRATCH SCRATCH SCRATCH..."
-        num = arr.sample
+        arr1 = ['1', '2', '3', '4', '5', '6', '0', '0', '0']
+        num = arr1.sample
         puts "You win $#{num}"
         # add the $#{num} to the players wallet
         puts "Play again Y/N?"
@@ -41,7 +42,7 @@ class Scratcher
         puts "Remember 1 scratcher is $1"
         start = gets.strip.downcase
         case start
-        when go
+        when 'go'
             #take $1 from the wallet then
             equations
         else
