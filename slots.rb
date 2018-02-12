@@ -4,10 +4,9 @@ require 'colorize'
 require_relative 'player'
 
 class Slots
-attr_accessor :bet, :player
+attr_accessor :player
 
-  def initialize(bet, player)
-    @bet = (0)
+  def menu(player)
     puts "==============================================="
     puts "Slot Machine is in effect"
     puts "Match two any suit and win your bet x2"
@@ -18,7 +17,7 @@ attr_accessor :bet, :player
     play = gets.strip.to_i
     case play
     when 1
-      menu(player)
+      imp(player)
     when 2 
       Casino.new
     else
@@ -26,7 +25,7 @@ attr_accessor :bet, :player
     end  
   end
 
-  def menu(player, bet)
+  def imp(player)
     arr1 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
     arr2 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
     arr3 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
@@ -35,12 +34,13 @@ attr_accessor :bet, :player
     @bet = gets.strip.to_i
     case @bet
     when player.wallet.amount < @bet
-    puts "Not enough money to cover your bet"
+      puts "Not enough money to cover your bet"
     when @bet < 2
-    puts "MINIMUM BET $2.00!"
+      puts "MINIMUM BET $2.00!"
     initialize(player)
     else @bet > 5
-    puts "\n"
+      puts "\n"
+    end
     f = arr1.sample
     s = arr2.sample
     t = arr3.sample
@@ -55,18 +55,13 @@ attr_accessor :bet, :player
       initialize(player)
     when f == s && s == t
       puts "JACKPOT!"
-      player.wallet.amount += (@bet*100)
+      player.wallet.amount += (@bet*5)
       initialize(player)
     else f != s
       puts "You lose."
       player.wallet.amount -= @bet
       initialize(player)
     end
-    menu(player)
-    end
   end
 end
-
-
-
-
+Slots.new.menu(Player)
