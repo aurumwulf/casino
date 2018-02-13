@@ -41,7 +41,14 @@ class Roulette
   end
 
   def prompt
-    puts 'Welcome to Roulette!'
+    if @wallet <= 0
+      puts
+      puts "YOU ARE OUT OF FUNDS TO PLAY ROULETTE".red
+      @casino.menu(@wallet)
+    end
+    puts
+    puts "--\u{2663}-\u{2666}--Welcome to Roulette!--\u{2665}-\u{2660}--".green
+    puts
     puts 'What would you like to do?'
     puts '1) Bet on Roulette.'
     puts '2) Exit to the main hall.'.red
@@ -62,8 +69,8 @@ class Roulette
     puts 'How much would you like to bet?'
     @bet = gets.to_f
     puts 'What would you like to bet on?'
-    puts '1) Number (Payout: 2x Bet)'
-    puts '2) Color (Payout: 0.5x Bet)'
+    puts '1) Number (Payout: 2X Bet)'
+    puts '2) Color (Payout: 0.5X Bet)'
     choice = gets.to_i
     case choice
     when 1
