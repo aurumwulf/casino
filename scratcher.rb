@@ -4,21 +4,28 @@ require 'colorize'
 require_relative 'player'
 
 class Scratcher
-    attr_accessor :player, :wallet
+    attr_accessor :casino, :bet
+
+    def initialize(wallet, casino)
+        @wallet = wallet
+        @casino = casino
+        @bet = 0
+        menu
+    end
 
     def equations
         puts "SCRATCH SCRATCH SCRATCH..."
-        arr1 = ['1', '2', '3', '4', '5', '6', '0', '0', '0']
+        arr1 = [1, 2, 3, 4, 5, 6, 100, 0, 0, 0, 0, 0, 0,]
         num = arr1.sample
         puts "You win $#{num}"
-        # add the $#{num} to the players wallet
+        @wallet = @wallet + num
         puts "Play again Y/N?"
         choice = gets.strip.downcase
         case choice
         when "y"
             menu
         else
-            Casino.new
+            @casino.menu(@wallet)
         end
     end
 
@@ -32,7 +39,7 @@ class Scratcher
         when 1
             stage_2
         when 2
-            Casino.new
+            @casino.menu(@wallet)
         end
     end
 
@@ -42,7 +49,7 @@ class Scratcher
         start = gets.strip.downcase
         case start
         when 'go'
-            #take $1 from the wallet then
+            @wallet - 1.0
             equations
         else
             menu
