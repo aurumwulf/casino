@@ -5,6 +5,7 @@ require_relative 'slots'
 require_relative 'roulette'
 require_relative 'scratcher'
 require_relative 'acey_deucey'  
+require_relative 'turtle_race'
 #require_relative every game file name
 
 class Casino
@@ -31,7 +32,7 @@ class Casino
     when 2
         Roulette.new(wallet, self)
     when 3
-        Claw.new
+        Turtle_Race.new
     when 4
         Scratcher.new(wallet, self)
     when 5

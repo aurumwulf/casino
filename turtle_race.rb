@@ -3,7 +3,7 @@ require 'colorize'
 require_relative 'player'
 
 class Turtle_Race
-  attr_accessor :player, :wallet
+  attr_accessor :player, :walletf
 
   array_2 = ["Snapping Turtle", "Box Turtle", "Painted Turtle", "Wood Turtle"]
 
@@ -66,8 +66,8 @@ class Turtle_Race
       puts "Congratulations! You've won!".colorize (:magenta)
     else array_1 != arry_2.sample
       puts "Too slow. Better luck next time.".colorize (:light_blue)
-      menu.new
     end
+    menu
   end
 end
 
