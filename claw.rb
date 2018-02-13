@@ -20,14 +20,14 @@ class Claw
 #objects: menu, take $ from wallet,
          #random array of icons, play again or exit
 
-  def initialize 
+  def initialize (wallet, casino)
     claw[]
 end
 
 def menu
   puts "~~Claw~~"
   puts "1) Begin game"
-  puts "2) Exit to Casino"
+  puts "2) Exit to Casino" #want to go back to the casino
   user_input = gets.strip.to_i
 end
 
