@@ -37,13 +37,13 @@ class Casino
     choice = gets.to_i
     case choice
     when 1
-        Slots.new(wallet, self)
+        Slots.new
     when 2
         Roulette.new(wallet, self)
     when 3
         TurtleRace.new(wallet, self)
     when 4
-        Scratcher.new(wallet, self)
+        Scratcher.new(wallet,self)
     when 5
         Acey_Deucey.new(wallet, self)
     when 6

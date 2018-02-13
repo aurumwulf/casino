@@ -3,7 +3,6 @@ require 'colorize'
 require_relative 'player'
 
 class TurtleRace
-  attr_accessor :player, :wallet
 
 
   def initialize (wallet, casino)
@@ -40,16 +39,16 @@ class TurtleRace
   def play_game
    
     puts "Which turtle would you like to bet on?".colorize (:green)
-    @array_2.each_with_index { |opt, i| puts "#{i + 1}) #{opt}" }
-
-    choice = gets.to_i
-    turtle = @array_2[choice - 1]
-    puts "You chose #{turtle}!"
+    puts "1 ~ Snapping Turtle".colorize (:yellow)
+    puts "2 ~ Box Turtle".colorize (:yellow)
+    puts "3 ~ Painted Turtle".colorize (:yellow)
+    puts "4 ~ Wood Turtle".colorize (:yellow)
+    choice = gets.strip.to_s.downcase
     puts "Enter your bet".colorize (:green)
     @bet = gets.to_f
-    result = @array_2.sample
-    puts "The winner is the #{result}!".colorize (:magenta)
-    if turtle == result
+    turtle = @array_2.sample
+    puts "The winner is the #{turtle}!".colorize (:magenta)
+    if choice == turtle
       @wallet += @bet*2
       puts "Congratulations! You've won!".colorize (:magenta)
     else 
