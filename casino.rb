@@ -3,6 +3,7 @@ require 'colorize'
 require_relative 'player'
 require_relative 'slots'
 require_relative 'roulette'
+require_relative 'scratcher'
 #require_relative every game file name
 
 class Casino
@@ -14,32 +15,26 @@ class Casino
     puts
     @player = Player.new
     @wallet = @player.wallet.amount
-    @options = ["Slots", "Roulette", "Claw"]
+    @options = ["Slots", "Roulette", "Claw", "Scratcher","Leave the Casino"]
     puts "--\u{2663}-\u{2666}--Choose a game!--\u{2665}-\u{2660}--".green
-<<<<<<< HEAD
-=======
     puts
-    @options = []
->>>>>>> menu
     menu
   end
 
   def menu
     @options.each_with_index { |opt, i| puts "#{i + 1}) #{opt}" }
-    puts "You currently have $#{'%.2f' % @wallet}.".green
+    puts "You currently have $#{'%.2f' % wallet}.".green
     choice = gets.to_i
     case choice
     when 1
-        
+      Slots.new
     when 2
-<<<<<<< HEAD
-        Roulette.new(@wallet)
+      Roulette.new
     when 3
-        Claw.new
-=======
-        Scratcher.new
->>>>>>> menu
+      Claw.rb
     when 4
+      Scratcher.new
+    when 5
         puts "Come back soon!"
         exit
     else

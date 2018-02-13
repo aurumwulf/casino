@@ -2,7 +2,6 @@
 require 'pry'
 require 'colorize'
 require_relative 'player'
-require_relative 'casino'
 
 class Scratcher
     attr_accessor :player, :wallet
