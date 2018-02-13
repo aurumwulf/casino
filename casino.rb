@@ -16,11 +16,7 @@ class Casino
     puts
     @player = Player.new
     wallet = @player.wallet.amount
-<<<<<<< HEAD
-    @options = ["Slots", "Roulette", "Claw", "Scratcher", "Acey-Deucey"]
-=======
-    @options = ["Slots", "Roulette", "Claw", "Scratcher", "Leave"]
->>>>>>> add scratcher 2 menu
+    @options = ["Slots", "Roulette", "Claw", "Scratcher", "Acey-Deucey", "Leave"]
     menu(wallet)
   end
 
