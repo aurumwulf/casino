@@ -6,6 +6,7 @@ class Player
   attr_accessor :name, :age, :wallet
 
   def initialize
+    @age = age
     puts "What is your name?"
     @name = gets.strip
     puts "What is your age?"
@@ -18,7 +19,7 @@ class Player
 
   def age_verification
     if @age < MIN_AGE
-      `NO CHILDREN ALLOWED!`
+      puts `NO CHILDREN ALLOWED!`
       exit
     end
   end
