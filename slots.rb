@@ -1,12 +1,19 @@
-# has bugs
+# needs to be called then will work
 require 'pry'
 require 'colorize'
 require_relative 'player'
 
 class Slots
-attr_accessor :player
+attr_accessor :casino, :bet
 
-  def menu(player)
+  def initialize(wallet, casino)
+    @wallet = wallet
+    @casino = casino
+    @bet = 0
+    menu
+  end
+
+  def menu
     puts "==============================================="
     puts "Slot Machine is in effect"
     puts "Match two any suit and win your bet x2"
@@ -17,28 +24,28 @@ attr_accessor :player
     play = gets.strip.to_i
     case play
     when 1
-      imp(player)
+      imp
     when 2
-      Casino.new
+      @casino.menu(@wallet)
     else
       puts "Not a valid input"
     end
   end
 
-  def imp(player)
+  def imp
     arr1 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
     arr2 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
     arr3 = ["\u{2660}".yellow, "\u{2663}".green, "\u{2666}".magenta, "\u{2665}".red]
-    puts "The minimum bet is $2.00. you have $#{player.wallet}."
+    puts "The minimum bet is $2.00. you have $#{@wallet}."
     puts "Place your bet now."
-    @bet = gets.strip.to_i
+    @bet = gets.to_f
     case @bet
-    when player.wallet.amount < @bet
+    when @wallet < @bet
       puts "Not enough money to cover your bet"
     when @bet < 2
       puts "MINIMUM BET $2.00!"
-    initialize(player)
-    else @bet > 5
+      menu
+    else @bet > 2
       puts "\n"
     end
     f = arr1.sample
@@ -48,19 +55,20 @@ attr_accessor :player
     print s ; sleep (1)
     puts t ; sleep (1)
     puts "\n"
+
     case
     when f == s && f != t
       puts "WINNER x2"
-      player.wallet.amount += (@bet*2)
-      initialize(player)
+      @wallet += (@bet*2)
+      menu
     when f == s && s == t
       puts "JACKPOT!"
-      player.wallet.amount += (@bet*5)
-      initialize(player)
+      @wallet += (@bet*5)
+      menu
     else f != s
       puts "You lose."
-      player.wallet.amount -= @bet
-      initialize(player)
+      @wallet -= @bet
+      menu
     end
   end
 end
