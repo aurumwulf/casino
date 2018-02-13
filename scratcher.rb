@@ -5,7 +5,7 @@ require_relative 'player'
 
 class Scratcher
     attr_accessor :player, :wallet
-    
+
     def equations
         puts "SCRATCH SCRATCH SCRATCH..."
         arr1 = ['1', '2', '3', '4', '5', '6', '0', '0', '0']
@@ -49,4 +49,3 @@ class Scratcher
         end
     end
 end
-Scratcher.new.menu
