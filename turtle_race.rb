@@ -25,13 +25,13 @@ class TurtleRace
     puts " "
     puts "Select 1 to play".colorize (:yellow)
     puts "Select 2 to exit and go back to the Casino".colorize (:yellow)
-    begin(gets.to_i)
+    #begin(gets.to_i)
     #@menu = gets.to_f
   end
 
   def begin(choice)
     case choice
-    when 1 
+    when 1
       play_game
     when 2
       puts "Ciao!"
@@ -41,7 +41,7 @@ class TurtleRace
       menu.new
     end
   end
-  #choice = gets.strip.to_s 
+  #choice = gets.strip.to_s
 
 
   def play_game
@@ -50,7 +50,7 @@ class TurtleRace
     puts "2 ~ Box Turtle".colorize (:yellow)
     puts "3 ~ Painted Turtle".colorize (:yellow)
     puts "4 ~ Wood Turtle".colorize (:yellow)
-    choice = gets.strip.to_s.downcase 
+    choice = gets.strip.to_s.downcase
     puts "Enter your bet".colorize (:green)
     @bet = gets.to_f
     @wallet -= @bet
@@ -70,5 +70,3 @@ class TurtleRace
     menu
   end
 end
-
- 
