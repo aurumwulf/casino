@@ -3,11 +3,12 @@ require_relative 'roulette_table'
 
 class Roulette
 
-  attr_accessor :number_list, :bet
+  attr_accessor :number_list, :bet, :casino
 
-  def initialize (wallet)
+  def initialize (wallet, casino)
     @number_list = []
     @wallet = wallet
+    @casino = casino
     @bet = 0
     generate_red
     generate_black
@@ -17,7 +18,7 @@ class Roulette
 
   def generate_red
     numbers_red = %w(1 3 5 7 9 12 14 16 18 21 23 25 27 28 30 32 34 36)
-    color = 'Red'
+    color = 'Red'.red
     numbers_red.each do |number|
       @number_list << Table.new(number, color)
     end
@@ -33,7 +34,7 @@ class Roulette
 
   def generate_zero
     numbers_zero = %w(0 00)
-    color = 'Green'
+    color = 'Green'.green
     numbers_zero.each do |number|
       @number_list << Table.new(number, color)
     end
@@ -49,7 +50,7 @@ class Roulette
       when 1
         play
       when 2
-        #TODO Exit to casino menu.
+        @casino.menu(@wallet)
       else
         puts 'Invalid menu selection.'.red
     end
