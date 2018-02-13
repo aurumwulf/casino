@@ -2,8 +2,8 @@ require 'pry'
 require 'colorize'
 require_relative 'player'
 
-class Turtle_Race
-  attr_accessor :player, :walletf
+class TurtleRace
+  attr_accessor :player, :wallet
 
   array_2 = ["Snapping Turtle", "Box Turtle", "Painted Turtle", "Wood Turtle"]
 
@@ -22,10 +22,10 @@ class Turtle_Race
     puts "Place your winning bet and double your money!"
     puts "Minimum bet $10"
     puts "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~".colorize (:green)
-     puts " "
+    puts " "
     puts "Select 1 to play".colorize (:yellow)
     puts "Select 2 to exit and go back to the Casino".colorize (:yellow)
-    play_game(gets.to_i)
+    begin(gets.to_i)
     #@menu = gets.to_f
   end
 
@@ -35,7 +35,7 @@ class Turtle_Race
       play_game
     when 2
       puts "Ciao!"
-      Casino.new 
+      @casino
     else
       puts "Invalid Choice".colorize (:red)
       menu.new

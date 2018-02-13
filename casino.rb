@@ -5,7 +5,7 @@ require_relative 'slots'
 require_relative 'roulette'
 require_relative 'scratcher'
 require_relative 'acey_deucey'  
-require_relative 'turtle_race'
+require_relative 'turtlerace'
 #require_relative every game file name
 
 class Casino
@@ -17,7 +17,7 @@ class Casino
     puts
     @player = Player.new
     wallet = @player.wallet.amount
-    @options = ["Slots", "Roulette", "Claw", "Scratcher", "Acey-Deucey", "Leave"]
+    @options = ["Slots", "Roulette", "Turtle Race", "Scratcher", "Acey-Deucey", "Leave"]
     menu(wallet)
   end
 
@@ -32,7 +32,7 @@ class Casino
     when 2
         Roulette.new(wallet, self)
     when 3
-        Turtle_Race.new
+        TurtleRace.new(wallet, self)
     when 4
         Scratcher.new(wallet, self)
     when 5
