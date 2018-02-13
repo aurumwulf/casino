@@ -1,33 +1,44 @@
 #player picks claw from casino menu, #2
 #money to be withdrawn from wallet to play claw
-#win or try again up to 2 more times - loop
+#win or try again up to 2 more times - loop or case statement?
+# - random, draw 1 from array
 # input more money or exit to main menu
+#color game
 
 
 
 
 
 
+require 'pry'
+require 'colorize'
 require_relative 'Casino'
 require_relative 'Player'
 require_relative 'Wallet'
 
-class Claw
+class Claw 
+#objects: menu, take $ from wallet,
+         #random array of icons, play again or exit
+
+  def initialize 
+    claw[]
+end
+
 def menu
-  puts "~~~Claw~~~"
+  puts "~~Claw~~"
   puts "1) Begin game"
-  puts "2) Exit"
+  puts "2) Exit to Casino"
   user_input = gets.strip.to_i
 end
 
 def choice
-    case user_input
-    when 1 
-     #under construction
-    when 2 
+  case user_input
+  when 1 
+
+  when 2 
       #go to main menu
     else 
-      puts "Bad user input. Try again"
+      puts "Bad user input. Play again or exit"
       menu
     end
 end
