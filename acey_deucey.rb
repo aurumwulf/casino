@@ -23,7 +23,7 @@ class Acey_Deucey
         when 2
             @casino.menu(@wallet)
         else
-            puts 'Bad User Input'
+            puts 'Bad User Input'; sleep(1)
         end
     end
 
