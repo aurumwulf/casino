@@ -4,7 +4,7 @@ require_relative 'player'
 require_relative 'slots'
 require_relative 'roulette'
 require_relative 'scratcher'
-require_relative 'acey_deucey'
+require_relative 'acey_deucey'  
 require_relative 'turtle_race'
 #require_relative every game file name
 
